@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LBD — Living By Design · Membership Portal</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body id="top">
+
+<!-- VIEW 1 — PUBLIC SITE -->
+<div id="viewSite" class="view active">
+
+<header class="nav">
+  <div class="wrap navIn">
+    <a class="brand" href="#top">
+      <span class="brandMark"><img src="assets/logo.png" alt="LBD logo"></span>
+      <span class="brandTxt"><b>LBD</b><span>Living By Design</span></span>
+    </a>
+    <nav class="navLinks">
+      <a class="navA" href="#tiers" data-sec="tiers">Membership Tiers</a>
+      <a class="navA" href="#apply" data-sec="apply">Application</a>
+    </nav>
+    <div class="navRight">
+      <button class="btnGhost onDark btnSm hideSm" id="btnLogin">Member Login</button>
+      <button class="btnGhost onDark btnSm smIco adminLink" title="Administrator sign-in"><i data-lucide="lock"></i>Admin</button>
+      <a class="btnG btnSm" href="#apply">Apply Now</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero">
+  <div class="heroLines" aria-hidden="true"></div>
+  <div class="wrap heroGrid" style="position:relative">
+    <div>
+      <div class="eyebrow rv">Living By Design — Membership Portal</div>
+      <h1 class="rv" style="--d:.06s">Access, issued<br><em>by design.</em></h1>
+      <p class="heroSub rv" style="--d:.12s">The LBD membership framework recognises verified track record across Bethel, NOVAS and the colonies — four tiers, one standard, reviewed by administrators before any card is issued.</p>
+      <div class="heroCtas rv" style="--d:.18s">
+        <a class="btnG" href="#tiers">Explore the tiers <i data-lucide="arrow-down"></i></a>
+        <a class="btnGhost onDark" href="#apply">Start application <i data-lucide="arrow-right"></i></a>
+      </div>
+      <div class="heroStats rv" style="--d:.24s">
+        <div class="stat"><b><span class="statN" data-v="4">00</span><i>+</i></b><span>Card Tiers</span></div>
+        <div class="stat"><b><span class="statN" data-v="7">00</span></b><span>Colonies</span></div>
+        <div class="stat"><b><span class="statN" data-v="30">00</span></b><span>Hubs</span></div>
+        <div class="stat"><b><span class="statN" data-v="90">00</span></b><span>Tribes</span></div>
+      </div>
+    </div>
+    <div class="fan rv" id="fan" style="--d:.15s">
+      <svg class="fanGuil" aria-hidden="true"></svg>
+      <div class="fanCard f1" data-goto-tier="general" title="General Card">
+        <div class="cardface cf-general">
+          <svg class="guil" aria-hidden="true"></svg>
+          <div class="cfTop"><div class="cfMark"><img src="assets/logo.png" alt=""></div><div class="cfTierChip"><i data-lucide="credit-card"></i>Standard</div></div>
+          <div class="cfMid"><div class="cfName">General</div><div class="cfSub">MAP Standard Member</div></div>
+          <div class="cfBot"><div class="cfChip"></div><div class="cfNum">•••• 4417</div><div class="cfSince">SINCE '25</div></div>
+        </div>
+      </div>
+      <div class="fanCard f2" data-goto-tier="silver" title="Silver MAP Card">
+        <div class="cardface cf-silver">
+          <svg class="guil" aria-hidden="true"></svg>
+          <div class="cfTop"><div class="cfMark"><img src="assets/logo.png" alt=""></div><div class="cfTierChip"><i data-lucide="medal"></i>Silver</div></div>
+          <div class="cfMid"><div class="cfName">Silver</div><div class="cfSub">MAP Silver Member</div></div>
+          <div class="cfBot"><div class="cfChip"></div><div class="cfNum">•••• 2210</div><div class="cfSince">SINCE '25</div></div>
+        </div>
+      </div>
+      <div class="fanCard f3" data-goto-tier="gold" title="MAP Card Gold">
+        <div class="cardface cf-gold">
+          <svg class="guil" aria-hidden="true"></svg>
+          <div class="cfTop"><div class="cfMark"><img src="assets/logo.png" alt=""></div><div class="cfTierChip"><i data-lucide="award"></i>Gold</div></div>
+          <div class="cfMid"><div class="cfName">Gold</div><div class="cfSub">MAP Gold Member</div></div>
+          <div class="cfBot"><div class="cfChip"></div><div class="cfNum">•••• 8830</div><div class="cfSince">SINCE '25</div></div>
+        </div>
+      </div>
+      <div class="fanCard f4" data-goto-tier="vip" title="VIP Card">
+        <div class="cardface cf-vip">
+          <svg class="guil" aria-hidden="true"></svg>
+          <div class="cfTop"><div class="cfMark"><img src="assets/logo.png" alt=""></div><div class="cfTierChip"><i data-lucide="gem"></i>VIP</div></div>
+          <div class="cfMid"><div class="cfName">VIP</div><div class="cfSub">Obsidian Member</div></div>
+          <div class="cfBot"><div class="cfChip"></div><div class="cfNum">•••• 0001</div><div class="cfSince">SINCE '25</div></div>
+        </div>
+      </div>
+      <span class="fanCap">The four-tier portfolio</span>
+    </div>
+    <span class="heroNote">LBD/MEMBERSHIP — ISSUANCE PROTOCOL 04</span>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="tickerTrack" id="tickerTrack"></div></div>
+
+<!-- SECTION 1 · TIERS -->
+<section id="tiers">
+  <div class="wrap">
+    <div class="secHead rv">
+      <div class="eyebrow secKicker">01 — Membership Tiers</div>
+      <h2>Four cards. <em>One standard.</em></h2>
+      <p>Each tier is earned — never bought outright. Criteria are verified against your record in Bethel, NOVAS and your colony before a card carries your name.</p>
+    </div>
+    <div class="tiersGrid">
+      <article class="tier rv" id="tier-general" style="--d:.02s">
+        <div class="cardface cf-general tilt">
+          <svg class="guil" aria-hidden="true"></svg>
+          <div class="cfTop"><div class="cfMark"><img src="assets/logo.png" alt=""></div><div class="cfTierChip"><i data-lucide="credit-card"></i>Standard</div></div>
+          <div class="cfMid"><div class="cfName">General</div><div class="cfSub">MAP Standard Member</div></div>
+          <div class="cfBot"><div class="cfChip"></div><div class="cfNum">•••• 4417</div><div class="cfSince">SINCE '25</div></div>
+        </div>
+        <div class="tierHead"><div><h3>General Card</h3><p class="tierTag">The entry standard</p></div></div>
+        <div class="tierBlock">
+          <div class="blkLabel"><span>Criteria</span><b>04</b></div>
+          <ul class="crit"><li>6 months – 1 year attendance in Bethel</li><li>Belonging to a colony and tribe</li><li>Active participation in NOVAS</li><li>Recommendation letter from Priestley division</li></ul>
+        </div>
+        <div class="tierBlock">
+          <div class="blkLabel"><span>Benefits</span><b>03</b></div>
+          <ul><li><i data-lucide="check"></i><span>Access to LBD intellectual webinars</span></li><li><i data-lucide="check"></i><span>Access to the loyalty programme</span></li><li><i data-lucide="check"></i><span>Access to the MAP library</span></li></ul>
+        </div>
+        <div class="tierFoot">
+          <div class="commit"><span>Annual commitment</span><b>Criteria-based</b></div>
+          <button class="selectTier" data-goto-tier="general">Select <i data-lucide="arrow-right"></i></button>
+        </div>
+      </article>
+
+      <article class="tier rv" id="tier-silver" style="--d:.08s">
+        <div class="cardface cf-silver tilt">
+          <svg class="guil" aria-hidden="true"></svg>
+          <div class="cfTop"><div class="cfMark"><img src="assets/logo.png" alt=""></div><div class="cfTierChip"><i data-lucide="medal"></i>Silver</div></div>
+          <div class="cfMid"><div class="cfName">Silver</div><div class="cfSub">MAP Silver Member</div></div>
+          <div class="cfBot"><div class="cfChip"></div><div class="cfNum">•••• 2210</div><div class="cfSince">SINCE '25</div></div>
+        </div>
+        <div class="tierHead"><div><h3>Silver MAP Card</h3><p class="tierTag">Committed standing</p></div></div>
+        <div class="tierBlock">
+          <div class="blkLabel"><span>Criteria</span><b>03</b></div>
+          <ul class="crit"><li>Active participation in Bethel</li><li>Active participation in NOVAS</li><li>₦1M – ₦2M annual financial commitment</li></ul>
+        </div>
+        <div class="tierBlock">
+          <div class="blkLabel"><span>Benefits</span><b>02</b></div>
+          <ul><li><i data-lucide="check"></i><span>Access to the loyalty programme</span></li><li><i data-lucide="check"></i><span>Discount rates with LBD partners</span></li></ul>
+        </div>
+        <div class="tierFoot">
+          <div class="commit"><span>Annual commitment</span><b>₦1M – ₦2M</b></div>
+          <button class="selectTier" data-goto-tier="silver">Select <i data-lucide="arrow-right"></i></button>
+        </div>
+      </article>
+
+      <article class="tier rv" id="tier-gold" style="--d:.14s">
+        <div class="cardface cf-gold tilt">
+          <svg class="guil" aria-hidden="true"></svg>
+          <div class="cfTop"><div class="cfMark"><img src="assets/logo.png" alt=""></div><div class="cfTierChip"><i data-lucide="award"></i>Gold</div></div>
+          <div class="cfMid"><div class="cfName">Gold</div><div class="cfSub">MAP Gold Member</div></div>
+          <div class="cfBot"><div class="cfChip"></div><div class="cfNum">•••• 8830</div><div class="cfSince">SINCE '25</div></div>
+        </div>
+        <div class="tierHead"><div><h3>MAP Card Gold</h3><p class="tierTag">Convention privileges</p></div></div>
+        <div class="tierBlock">
+          <div class="blkLabel"><span>Criteria</span><b>03</b></div>
+          <ul class="crit"><li>Active participation in Bethel</li><li>Active participation in NOVAS</li><li>₦3M – ₦4M annual financial commitment</li></ul>
+        </div>
+        <div class="tierBlock">
+          <div class="blkLabel"><span>Benefits</span><b>02</b></div>
+          <ul><li><i data-lucide="check"></i><span>Exclusive seat with MAP during convention</span></li><li><i data-lucide="check"></i><span>Full benefits of the loyalty programme</span></li></ul>
+        </div>
+        <div class="tierFoot">
+          <div class="commit"><span>Annual commitment</span><b>₦3M – ₦4M</b></div>
+          <button class="selectTier" data-goto-tier="gold">Select <i data-lucide="arrow-right"></i></button>
+        </div>
+      </article>
+
+      <article class="tier vip rv" id="tier-vip" style="--d:.2s">
+        <div class="cardface cf-vip tilt">
+          <svg class="guil" aria-hidden="true"></svg>
+          <div class="cfTop"><div class="cfMark"><img src="assets/logo.png" alt=""></div><div class="cfTierChip"><i data-lucide="gem"></i>VIP</div></div>
+          <div class="cfMid"><div class="cfName">VIP</div><div class="cfSub">Obsidian Member</div></div>
+          <div class="cfBot"><div class="cfChip"></div><div class="cfNum">•••• 0001</div><div class="cfSince">SINCE '25</div></div>
+        </div>
+        <div class="tierHead"><div><h3>VIP Card</h3><p class="tierTag">The pinnacle</p></div><span class="pillPin">PINNACLE</span></div>
+        <div class="tierBlock">
+          <div class="blkLabel"><span>Criteria</span><b>02</b></div>
+          <ul class="crit"><li>₦5,000,000 and above annual commitment</li><li>Participation in Bethel and NOVAS</li></ul>
+        </div>
+        <div class="tierBlock">
+          <div class="blkLabel"><span>Benefits</span><b>05</b></div>
+          <ul><li><i data-lucide="check"></i><span>Zero registration at conventions &amp; retreats</span></li><li><i data-lucide="check"></i><span>Business &amp; product advertising on LBD channels</span></li><li><i data-lucide="check"></i><span>Exclusive seat with MAP at conventions &amp; retreats</span></li><li><i data-lucide="check"></i><span>Full benefits of the loyalty programme</span></li><li><i data-lucide="check"></i><span>Free LBD drive</span></li></ul>
+        </div>
+        <div class="tierFoot">
+          <div class="commit"><span>Annual commitment</span><b>₦5M and above</b></div>
+          <button class="selectTier" data-goto-tier="vip">Select <i data-lucide="arrow-right"></i></button>
+        </div>
+      </article>
+    </div>
+    <div class="tiersNote rv">
+      <i data-lucide="flame"></i>
+      <span>Every application is reviewed by an administrator against the verified LBD track record — a decision on status or tier placement is communicated within 12 to 24 hours.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 · APPLICATION -->
+<section id="apply">
+  <div class="wrap">
+    <div class="secHead rv">
+      <div class="eyebrow secKicker">02 — Application</div>
+      <h2>Apply for <em>your card.</em></h2>
+    </div>
+    <div class="applyGrid">
+      <div class="applyLeft rv">
+        <p>Complete the profile below exactly as it appears in your colony records. Your application is matched against the criteria of your chosen tier.</p>
+        <div class="steps">
+          <div class="stepsTop"><b>Application progress</b><span id="stepPct">0 / 3</span></div>
+          <div class="stepBar"><i id="stepBar"></i></div>
+          <div class="step" id="st1"><div class="stDot"><b>1</b><i data-lucide="check"></i></div><div><h4>Identity</h4><p>Full name, email &amp; WhatsApp number</p></div></div>
+          <div class="step" id="st2"><div class="stDot"><b>2</b><i data-lucide="check"></i></div><div><h4>Affiliation</h4><p>Colony, hub &amp; tribe assignment</p></div></div>
+          <div class="step" id="st3"><div class="stDot"><b>3</b><i data-lucide="check"></i></div><div><h4>Tier &amp; documents</h4><p>Card tier selection + letter (General Card)</p></div></div>
+        </div>
+        <div class="nextBox">
+          <h4>What happens next</h4>
+          <p>Applications are reviewed within 12 to 24 hours. Expect contact by email or WhatsApp regarding your status — or a proposed tier upgrade where your record exceeds your selection.</p>
+          <div class="channels">
+            <span><i data-lucide="mail"></i>EMAIL</span>
+            <span><i data-lucide="phone"></i>WHATSAPP</span>
+            <span><i data-lucide="timer"></i>12–24H</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="formPanel rv" id="appForm" style="--d:.1s" novalidate>
+        <div class="formGrid">
+          <div class="field full" id="f-name">
+            <label for="fName">Full Name</label>
+            <div class="inWrap"><i data-lucide="user"></i><input type="text" id="fName" placeholder="e.g. Adaeze Okafor" autocomplete="name"></div>
+            <div class="err">Please enter your full name.</div>
+          </div>
+          <div class="field" id="f-email">
+            <label for="fEmail">Email</label>
+            <div class="inWrap"><i data-lucide="mail"></i><input type="email" id="fEmail" placeholder="you@example.com" autocomplete="email"></div>
+            <div class="err">Enter a valid email address.</div>
+          </div>
+          <div class="field" id="f-phone">
+            <label for="fPhone">WhatsApp Number</label>
+            <div class="inWrap"><i data-lucide="phone"></i><input type="tel" id="fPhone" placeholder="+234 8xx xxx xxxx" autocomplete="tel"></div>
+            <div class="err">Enter a valid WhatsApp number.</div>
+          </div>
+          <div class="field" id="f-colony">
+            <label>Colony</label>
+            <div class="select" id="selColony" data-ph="Select colony">
+              <button type="button" class="selectBtn"><span class="selVal placeholder">Select colony</span><i data-lucide="chevron-down"></i></button>
+              <div class="selPop"><div class="selSearch"><i data-lucide="search"></i><input type="text" placeholder="Search…"></div><ul class="selList" role="listbox"></ul></div>
+            </div>
+            <div class="err">Please select colony.</div>
+          </div>
+          <div class="field" id="f-hub">
+            <label>Hub</label>
+            <div class="select" id="selHub" data-ph="Select hub">
+              <button type="button" class="selectBtn"><span class="selVal placeholder">Select hub</span><i data-lucide="chevron-down"></i></button>
+              <div class="selPop"><div class="selSearch"><i data-lucide="search"></i><input type="text" placeholder="Search…"></div><ul class="selList" role="listbox"></ul></div>
+            </div>
+            <div class="err">Please select hub.</div>
+          </div>
+          <div class="field" id="f-tribe">
+            <label>Tribe</label>
+            <div class="select" id="selTribe" data-ph="Select tribe">
+              <button type="button" class="selectBtn"><span class="selVal placeholder">Select tribe</span><i data-lucide="chevron-down"></i></button>
+              <div class="selPop"><div class="selSearch"><i data-lucide="search"></i><input type="text" placeholder="Search…"></div><ul class="selList" role="listbox"></ul></div>
+            </div>
+            <div class="err">Please select tribe.</div>
+          </div>
+          <div class="field" id="f-tier">
+            <label>Card Tier</label>
+            <div class="select hasSwatch" id="selTier" data-ph="Select tier">
+              <button type="button" class="selectBtn"><span class="selVal placeholder"><span class="btnSw"></span>Select tier</span><i data-lucide="chevron-down"></i></button>
+              <div class="selPop"><div class="selSearch" style="display:none"><i data-lucide="search"></i><input type="text"></div><ul class="selList" role="listbox"></ul></div>
+            </div>
+            <div class="err">Select the card tier you are applying for.</div>
+          </div>
+          <div class="field full" id="f-letter">
+            <label>Recommendation Letter — Priestley Division <span class="tagReq opt" id="letterTag">Optional</span></label>
+            <div class="drop" id="drop">
+              <div class="dropIcon"><i data-lucide="file-up"></i></div>
+              <div class="dropTxt">
+                <b>Attach recommendation letter</b>
+                <span id="letterHint">PDF, JPG or PNG · max 5MB · click or drag to upload</span>
+              </div>
+              <input type="file" id="letter" accept=".pdf,.jpg,.jpeg,.png" hidden>
+            </div>
+            <div class="fileChip" id="fileChip">
+              <i data-lucide="file-text"></i>
+              <span class="fcName" id="fileName"></span>
+              <span class="fcSize" id="fileSize"></span>
+              <button type="button" id="fileRemove" title="Remove file"><i data-lucide="x"></i></button>
+            </div>
+            <div class="err" id="letterErr">A recommendation letter from your Priestley division is required for the General Card.</div>
+          </div>
+          <div class="formFoot">
+            <button type="submit" class="btnG submitBtn" id="submitBtn">Submit Application <i data-lucide="arrow-right"></i></button>
+            <p class="formLegal">By submitting, you affirm your record in Bethel and NOVAS is accurate and verifiable.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footIn">
+    <div class="footLeft">
+      <span class="brandMark"><img src="assets/logo.png" alt=""></span>
+      <p><b>Living By Design</b> — membership issued on merit, reviewed with care.</p>
+    </div>
+    <nav class="footLinks">
+      <a href="#tiers">Tiers</a>
+      <a href="#apply">Apply</a>
+      <button type="button" class="adminLink"><i data-lucide="lock"></i>Admin Sign-in</button>
+    </nav>
+    <span class="footCopy">© 2025 LBD MEMBERSHIP SYSTEMS</span>
+  </div>
+</footer>
+</div><!-- /viewSite -->
+
+<!-- VIEW 2 — ADMIN LOGIN / FIRST-TIME SETUP -->
+<div id="viewLogin" class="view">
+  <div class="emberStage">
+    <div class="heroLines" aria-hidden="true"></div>
+    <form class="loginCard" id="loginForm" novalidate>
+      <div class="loginLogo"><img src="assets/logo.png" alt="LBD logo"></div>
+      <div class="loginEyebrow" id="loginEyebrow">LBD — Review Desk</div>
+      <h2 id="loginTitle">Admin Sign-in</h2>
+      <p class="loginSub" id="loginSub">Checking the review desk…</p>
+
+      <div class="loginErr" id="loginErr" role="alert">
+        <i data-lucide="alert-triangle"></i><span id="loginErrTxt"></span>
+      </div>
+
+      <div class="field loginField hidden" id="codeField">
+        <label for="setupCode">Setup Code</label>
+        <div class="inWrap"><i data-lucide="key-round"></i><input type="text" id="setupCode" placeholder="Code from your Apps Script owner" autocomplete="off"></div>
+      </div>
+      <div class="field loginField hidden" id="passField">
+        <label for="adminPass" id="passLabel">Password</label>
+        <div class="inWrap hasToggle">
+          <i data-lucide="lock"></i>
+          <input type="password" id="adminPass" placeholder="••••••••" autocomplete="current-password">
+          <button type="button" class="pwToggle" id="pwToggle" title="Show password"><i data-lucide="eye"></i></button>
+        </div>
+        <p class="pwHint hidden" id="pwHint">At least 8 characters. Keep it somewhere safe.</p>
+      </div>
+      <div class="field loginField hidden" id="confirmField">
+        <label for="adminPass2">Confirm Password</label>
+        <div class="inWrap"><i data-lucide="lock"></i><input type="password" id="adminPass2" placeholder="••••••••" autocomplete="new-password"></div>
+      </div>
+
+      <button type="submit" class="btnG loginBtn" id="loginBtn" disabled>Please wait…</button>
+      <button type="button" class="backLink" id="loginBack"><i data-lucide="arrow-left"></i> Back to member portal</button>
+    </form>
+    <span class="stageNote">LBD MEMBERSHIP SYSTEMS · RESTRICTED CONSOLE</span>
+  </div>
+</div>
+
+<!-- VIEW 3 — ADMIN DASHBOARD -->
+<div id="viewAdmin" class="view">
+  <header class="admBar">
+    <div class="wrap admBarIn">
+      <div class="admBrand">
+        <span class="brandMark"><img src="assets/logo.png" alt="LBD logo"></span>
+        <span class="admBrandTxt"><b>LBD</b><span>Review Desk</span></span>
+      </div>
+      <span class="adminBadge"><i data-lucide="shield-check"></i>ADMIN CONSOLE</span>
+      <div class="admRight">
+        <span class="admClock mono" id="admClock">--:--:--</span>
+        <span class="admUser"><span class="avatar">A</span><span class="admUserName">Administrator</span></span>
+        <button class="btnGhost onDark btnSm smIco" id="btnSignout"><i data-lucide="log-out"></i>Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap admMain">
+    <div class="conHead">
+      <div>
+        <div class="eyebrow secKicker">Restricted — Administrator Access</div>
+        <h2>Review <em>Queue.</em></h2>
+        <p class="conSub">Verify each profile against card criteria, then approve, upgrade to a higher tier, or reject based on the verified LBD track record.</p>
+      </div>
+      <div class="conTools">
+        <div class="conSearch"><i data-lucide="search"></i><input type="text" id="qSearch" placeholder="Search applicants…"></div>
+        <button class="btnGhost btnSm smIco" id="btnRefresh" title="Reload applications"><i data-lucide="refresh-cw"></i></button>
+      </div>
+    </div>
+
+    <div class="statStrip" id="statStrip"></div>
+
+    <div class="console">
+      <div class="consoleTop">
+        <span class="cdot"></span><span class="cdot"></span><span class="cdot"></span>
+        <span class="cTitle">console.lbd / review-queue</span>
+        <span class="liveTag"><span class="liveDot"></span>LIVE</span>
+      </div>
+      <div class="conTabs" id="conTabs"></div>
+      <div class="tblWrap">
+        <table>
+          <thead><tr>
+            <th>Applicant</th><th>Colony · Hub · Tribe</th><th>Tier Applied</th><th>Commitment</th><th>Status</th><th style="text-align:right">Quick Actions</th>
+          </tr></thead>
+          <tbody id="qBody"></tbody>
+        </table>
+      </div>
+      <div class="emptyState" id="qEmpty"><i data-lucide="inbox"></i><p>No applications match this view.</p></div>
+      <div class="conFoot"><span id="qCount">—</span><span>LBD MEMBERSHIP SYSTEMS · INTERNAL</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- upgrade popover (was missing from the original) -->
+<div class="tierPop" id="tierPop"></div>
+
+<!-- confirmation modal + toasts -->
+<div class="modalWrap" id="modalWrap" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="mClose" id="mClose" title="Close"><i data-lucide="x"></i></button>
+    <span id="mCheckHolder"></span>
+    <div class="mRef" id="mRef">REFERENCE · —</div>
+    <h3>Application Submitted.</h3>
+    <p class="mBody">Please allow 12 to 24 hours for our administrators to review your profile against the card criteria. We will contact you via email or WhatsApp regarding your application status or potential tier upgrades.</p>
+    <div class="mChips">
+      <span class="mChip" id="mName">—</span>
+      <span class="mChip"><span class="dot" id="mTierDot"></span><span id="mTier">—</span></span>
+    </div>
+    <p class="mNote">Keep your reference ID — quote it in any correspondence with the membership office.</p>
+    <div class="mBtns"><button class="btnG" id="mDone">Back to Portal</button></div>
+  </div>
+</div>
+<div class="toasts" id="toasts"></div>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
