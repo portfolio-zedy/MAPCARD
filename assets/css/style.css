@@ -229,9 +229,6 @@ section{padding:110px 0}
 .field{display:flex;flex-direction:column}
 .field.full{grid-column:1/-1}
 .field label{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:9px;display:flex;align-items:center;justify-content:space-between}
-.tagReq{font-size:9px;letter-spacing:.16em;border-radius:999px;padding:3px 8px}
-.tagReq.req{background:var(--org);color:#FFF6EA;font-weight:600}
-.tagReq.opt{border:1px solid var(--line2);color:var(--dim)}
 .inWrap{position:relative;display:flex;align-items:center}
 .inWrap > i{position:absolute;left:14px;font-size:15px;line-height:1;color:var(--dim);pointer-events:none}
 input[type=text],input[type=email],input[type=tel],input[type=password]{width:100%;background:var(--deep);border:1px solid var(--line);border-radius:11px;padding:13px 15px;font-size:14.5px;color:var(--ink);transition:border-color .2s,box-shadow .2s}
@@ -272,22 +269,6 @@ input:focus{outline:none;border-color:var(--org);box-shadow:0 0 0 3px rgba(200,8
 .btnSw{display:none;width:9px;height:9px;border-radius:3px;background:var(--c,#888);border:1px solid rgba(60,30,10,.3)}
 .btnSw.show{display:block}
 
-/* dropzone */
-.drop{border:1.5px dashed var(--line2);border-radius:13px;padding:22px;display:flex;align-items:center;gap:15px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--deep)}
-.drop:hover,.drop.drag{border-color:var(--org);background:rgba(200,80,26,.06)}
-.dropIcon{width:40px;height:40px;border-radius:10px;border:1px solid var(--line2);flex:none;display:grid;place-items:center;color:var(--org);background:var(--paper)}
-.dropIcon i{font-size:18px;line-height:1}
-.dropTxt b{display:block;font-size:13.5px;font-weight:600}
-.dropTxt span{font-size:12px;color:var(--dim)}
-.fileChip{display:none;align-items:center;gap:11px;background:rgba(200,80,26,.08);border:1px solid rgba(200,80,26,.4);border-radius:11px;padding:11px 14px;margin-top:10px}
-.fileChip.show{display:flex}
-.fileChip i{font-size:15px;line-height:1;color:var(--org);flex:none}
-.fileChip .fcName{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.fileChip .fcSize{font-family:var(--mono);font-size:10.5px;color:var(--dim);flex:none}
-.fileChip button{margin-left:auto;color:var(--dim);display:grid;place-items:center;flex:none}
-.fileChip button:hover{color:var(--red)}
-.fileChip button i{font-size:14px;line-height:1;color:inherit}
-.drop.error{border-color:var(--red)}
 .formFoot{grid-column:1/-1;border-top:1px solid var(--line);padding-top:22px;margin-top:4px}
 .submitBtn{width:100%;justify-content:center;padding:15px;font-size:15px;border-radius:12px}
 .formLegal{text-align:center;font-size:12px;color:var(--dim);margin-top:14px}
@@ -374,10 +355,6 @@ tbody tr.flash{animation:rowFlash 1.4s ease}
 .aRec{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--org2);opacity:.85;margin-top:5px;letter-spacing:.04em}
 .aAff{font-size:13px;font-weight:500}
 .aSub{font-size:11px;color:var(--dim);margin-top:3px}
-.aLetter{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:var(--mut);margin-top:5px}
-.aLetter i{font-size:11px;line-height:1;color:var(--org)}
-.aLetter a{color:var(--org);text-decoration:underline}
-.aLetter.missing{color:var(--red)}
 .tierChip{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;white-space:nowrap}
 .tierChip .dot{width:9px;height:9px;border-radius:3px;background:var(--c);border:1px solid rgba(60,30,10,.3)}
 .aCommit{color:var(--mut);font-size:12px;white-space:nowrap}
