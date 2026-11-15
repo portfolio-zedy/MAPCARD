@@ -284,15 +284,12 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape'){ Sel.closeAl
 
 function updateLetterUI(tier){
   const tag = $('#letterTag'), hint = $('#letterHint');
-  if (tier === 'general'){
-    tag.textContent = 'Required'; tag.className = 'tagReq req';
-    hint.textContent = 'Required for the LBD Member Card — issued by your Priestley division';
-  } else {
-    tag.textContent = 'Optional'; tag.className = 'tagReq opt';
-    hint.textContent = tier
-      ? 'Not required for this tier — attach only if it strengthens your review'
-      : 'Required only for LBD Member Card applications · PDF, JPG or PNG · max 5MB';
-  }
+  tag.textContent = 'Optional'; tag.className = 'tagReq opt';
+  hint.textContent = tier === 'general'
+    ? 'Optional — attach your Priestley division recommendation letter if you have it · PDF, JPG or PNG · max 5MB'
+    : tier
+      ? 'Optional — attach only if it strengthens your review · PDF, JPG or PNG · max 5MB'
+      : 'Optional · PDF, JPG or PNG · max 5MB · click or drag to upload';
 }
 
 /* file upload */
@@ -340,7 +337,7 @@ function updateSteps(){
   const phone = $('#fPhone').value.replace(/\D/g,'').length >= 7;
   const s1 = name.length >= 3 && email && phone;
   const s2 = !!(selColony.value && selHub.value && selTribe.value);
-  const s3 = !!selTier.value && (selTier.value !== 'general' || !!state.file);
+  const s3 = !!selTier.value;                       // the letter is optional
   const done = [s1,s2,s3];
   done.forEach((d,i) => $('#st' + (i+1)).classList.toggle('done', d));
   const n = done.filter(Boolean).length;
@@ -368,10 +365,6 @@ $('#appForm').addEventListener('submit', async e => {
     ok = false;
   }
   if (!selTier.value){ setErr('#f-tier', true); firstErr = firstErr || '#f-tier'; ok = false; }
-  if (selTier.value === 'general' && !state.file){
-    $('#f-letter').classList.add('error'); drop.classList.add('error');
-    firstErr = firstErr || '#f-letter'; ok = false;
-  }
   if (!ok){ $(firstErr).scrollIntoView({behavior:'smooth', block:'center'}); toast('Please complete the highlighted fields.', 'warn'); return; }
 
   const btn = $('#submitBtn'), label = btn.innerHTML;
@@ -566,7 +559,7 @@ function renderDrawer(){
   const item = (k, v, cls = '') => `<div class="dwItem ${cls}"><dt>${k}</dt><dd${cls.includes('mono') ? ' class="mono"' : ''}>${v}</dd></div>`;
   const tel = unq(a.phone).replace(/[^\d+]/g, '');
   const letter = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">View recommendation letter</a>`
-    : (ak === 'general' ? '<span class="bad">Missing — required for the LBD Member Card</span>' : '<span class="dim">Not required for this card</span>');
+    : '<span class="dim">No letter attached</span>';
 
   const details = [
     item('Reference ID', esc(a.ref), 'mono'),
