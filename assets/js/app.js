@@ -5,7 +5,6 @@
 /* ---------- CONFIG: paste your Apps Script Web App URL here ---------- */
 const CONFIG = {
   API_URL: 'https://script.google.com/macros/s/AKfycbyNFS1hcJRfmjxq8h8qaTcuptiC2Gs_LIPRP_g3oVLAZJfM-hOC-YvUqZZ4NGtjYC6V/exec',   // https://script.google.com/macros/s/XXXX/exec
-  MAX_FILE_MB: 5,
   POLL_MS: 45000,                            // admin queue auto-refresh
 };
 const TOKEN_KEY = 'lbd_admin_token';
@@ -40,7 +39,6 @@ const $  = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const safeUrl = u => /^https:\/\/(drive|docs)\.google\.com\//.test(u || '') ? u : '';
 
 function toast(msg, kind = 'ok'){
   const icons = {ok:'check-circle', warn:'info-circle', bad:'x-circle'};
@@ -273,55 +271,13 @@ setInterval(() => {
 /* ============================================================
    APPLICATION FORM (public site)
    ============================================================ */
-const state = {file:null};
 const selColony = new Sel($('#selColony'), colonyOpts, {searchable:true, onChange:() => { clearErr('#f-colony'); updateSteps(); }});
 const selHub    = new Sel($('#selHub'),    hubOpts,    {searchable:true, onChange:() => { clearErr('#f-hub');    updateSteps(); }});
 const selTribe  = new Sel($('#selTribe'),  tribeOpts,  {searchable:true, onChange:() => { clearErr('#f-tribe');  updateSteps(); }});
-const selTier   = new Sel($('#selTier'),   tierOpts,   {swatch:true,     onChange:v => { clearErr('#f-tier'); updateLetterUI(v); updateSteps(); }});
+const selTier   = new Sel($('#selTier'),   tierOpts,   {swatch:true,     onChange:v => { clearErr('#f-tier'); updateSteps(); }});
 
 document.addEventListener('click', e => { if (!e.target.closest('.select')) Sel.closeAll(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape'){ Sel.closeAll(); closeModal(); } });
-
-function updateLetterUI(tier){
-  const tag = $('#letterTag'), hint = $('#letterHint');
-  tag.textContent = 'Optional'; tag.className = 'tagReq opt';
-  hint.textContent = tier === 'general'
-    ? 'Optional — attach your Priestley division recommendation letter if you have it · PDF, JPG or PNG · max 5MB'
-    : tier
-      ? 'Optional — attach only if it strengthens your review · PDF, JPG or PNG · max 5MB'
-      : 'Optional · PDF, JPG or PNG · max 5MB · click or drag to upload';
-}
-
-/* file upload */
-const drop = $('#drop'), fileIn = $('#letter');
-const OK_TYPES = ['application/pdf','image/jpeg','image/png'];
-drop.addEventListener('click', () => fileIn.click());
-['dragover','dragenter'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('drag'); }));
-['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('drag'); }));
-drop.addEventListener('drop', e => { const f = e.dataTransfer.files[0]; if (f) setFile(f); });
-fileIn.addEventListener('change', () => { if (fileIn.files[0]) setFile(fileIn.files[0]); });
-function setFile(f){
-  if (!OK_TYPES.includes(f.type)){ toast('Only PDF, JPG or PNG files are accepted.', 'warn'); fileIn.value = ''; return; }
-  if (f.size > CONFIG.MAX_FILE_MB * 1024 * 1024){ toast(`File is larger than ${CONFIG.MAX_FILE_MB}MB.`, 'warn'); fileIn.value = ''; return; }
-  state.file = f;
-  $('#fileName').textContent = f.name;
-  $('#fileSize').textContent = (f.size / 1024).toFixed(0) + ' KB';
-  $('#fileChip').classList.add('show');
-  $('#f-letter').classList.remove('error'); drop.classList.remove('error');
-  updateSteps();
-}
-$('#fileRemove').addEventListener('click', e => {
-  e.stopPropagation();
-  state.file = null; fileIn.value = '';
-  $('#fileChip').classList.remove('show');
-  updateSteps();
-});
-const toBase64 = f => new Promise((res, rej) => {
-  const r = new FileReader();
-  r.onload = () => res(String(r.result).split(',')[1]);
-  r.onerror = () => rej(new Error('Could not read the file.'));
-  r.readAsDataURL(f);
-});
 
 /* validation */
 function setErr(sel, on){ const f = $(sel); if (f) f.classList.toggle('error', on); }
@@ -337,7 +293,7 @@ function updateSteps(){
   const phone = $('#fPhone').value.replace(/\D/g,'').length >= 7;
   const s1 = name.length >= 3 && email && phone;
   const s2 = !!(selColony.value && selHub.value && selTribe.value);
-  const s3 = !!selTier.value;                       // the letter is optional
+  const s3 = !!selTier.value;
   const done = [s1,s2,s3];
   done.forEach((d,i) => $('#st' + (i+1)).classList.toggle('done', d));
   const n = done.filter(Boolean).length;
@@ -345,7 +301,6 @@ function updateSteps(){
   $('#stepPct').textContent = `${n} / 3`;
   return {s1,s2,s3};
 }
-updateLetterUI(null);
 
 /* submit → backend */
 $('#appForm').addEventListener('submit', async e => {
@@ -374,7 +329,6 @@ $('#appForm').addEventListener('submit', async e => {
       name:$('#fName').value.trim(), email:$('#fEmail').value.trim(), phone:$('#fPhone').value.trim(),
       colony:selColony.value, hub:selHub.value, tribe:selTribe.value, tier:selTier.value,
     };
-    if (state.file) payload.file = {name:state.file.name, mime:state.file.type, data:await toBase64(state.file)};
     const out = await api('submit', payload);
 
     $('#mRef').textContent = 'REFERENCE · ' + out.ref;
@@ -402,11 +356,8 @@ $('#modalWrap').addEventListener('click', e => { if (e.target === $('#modalWrap'
 function resetForm(){
   $('#appForm').reset();
   [selColony, selHub, selTribe, selTier].forEach(s => s.reset());
-  state.file = null; fileIn.value = '';
-  $('#fileChip').classList.remove('show');
   $$('#viewSite .field').forEach(f => f.classList.remove('error'));
-  drop.classList.remove('error');
-  updateLetterUI(null); updateSteps();
+  updateSteps();
 }
 
 $('#btnLogin').addEventListener('click', () => openMemberLogin());
@@ -554,12 +505,10 @@ function renderDrawer(){
   $('#dwName').textContent = unq(a.name);
   const st = $('#dwStatus'); st.className = 'pill p-' + a.status; st.textContent = statusLabel(a);
 
-  const ak = appliedKey(a), url = safeUrl(a.letterUrl);
+  const ak = appliedKey(a);
   const chip = k => `<span class="tierChip"><span class="dot" style="--c:${TIERS[k].color}"></span>${esc(TIERS[k].label)}</span>`;
   const item = (k, v, cls = '') => `<div class="dwItem ${cls}"><dt>${k}</dt><dd${cls.includes('mono') ? ' class="mono"' : ''}>${v}</dd></div>`;
   const tel = unq(a.phone).replace(/[^\d+]/g, '');
-  const letter = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">View recommendation letter</a>`
-    : '<span class="dim">No letter attached</span>';
 
   const details = [
     item('Reference ID', esc(a.ref), 'mono'),
@@ -573,7 +522,6 @@ function renderDrawer(){
     item('Annual commitment', esc(TIERS[ak].commit)),
     a.tier !== ak ? item('Current card', chip(a.tier) + `<div class="aSub mono">${esc(TIERS[a.tier].commit)}</div>`) : '',
     a.status === 'suggested' && TIERS[a.suggestedTier] ? item('Card offered', chip(a.suggestedTier) + '<div class="aSub mono">awaiting the applicant’s reply</div>') : '',
-    item('Recommendation letter', letter, 'full'),
     item('Last updated', esc(longDate(a.updated)), 'full'),
   ].join('');
 
@@ -620,7 +568,7 @@ $('#dwBody').addEventListener('click', async e => {
     dwMode = dwMode === act ? null : act; return renderDrawer();
   }
   if (act === 'delete'){
-    if (!confirm(`Permanently delete ${a.name}'s application (${a.ref})? This also removes their uploaded letter and cannot be undone.`)) return;
+    if (!confirm(`Permanently delete ${a.name}'s application (${a.ref})? This cannot be undone.`)) return;
     try { await api('deleteApp', {uid:a.uid}, {auth:true}); apps = apps.filter(x => x !== a); closeDrawer(); renderQueue(); toast('Application deleted.', 'warn'); }
     catch (err) { if (err.code === 'AUTH') sessionExpired(); else toast(err.message, 'bad'); }
     return;
@@ -936,7 +884,7 @@ $$('.selectTier[data-goto-tier]').forEach(b =>
   b.addEventListener('click', () => {
     const k = b.dataset.gotoTier;
     selTier.set(k, true);
-    updateLetterUI(k); updateSteps();
+    updateSteps();
     $('#apply').scrollIntoView({behavior:'smooth'});
     const selRoot = $('#selTier');
     setTimeout(() => { selRoot.classList.remove('open'); selRoot.animate(
