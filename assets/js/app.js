@@ -4,7 +4,7 @@
 
 /* ---------- CONFIG: paste your Apps Script Web App URL here ---------- */
 const CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbyNFS1hcJRfmjxq8h8qaTcuptiC2Gs_LIPRP_g3oVLAZJfM-hOC-YvUqZZ4NGtjYC6V/exec',   // https://script.google.com/macros/s/XXXX/exec
+  API_URL: 'https://script.google.com/macros/s/AKfycbwrit00oGc5mEZFPV2ka_sBnxDw-9y7mSBzy56Isf9ttGamIocdoFEMT7GasLco_r9Y/exec',   // https://script.google.com/macros/s/XXXX/exec
   POLL_MS: 45000,                            // admin queue auto-refresh
 };
 const TOKEN_KEY = 'lbd_admin_token';
